@@ -1,5 +1,6 @@
 package tech.philsoft.notesapp.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,13 +13,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import tech.philsoft.notesapp.R;
+import tech.philsoft.notesapp.fragments.NotePlainEditorFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NotePlainEditorFragment.OnFragmentInteractionListener{
+
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        if (savedInstanceState == null){
+            NotePlainEditorFragment fragment = new NotePlainEditorFragment();
+            openFragment(fragment, "Note Editor");
+        }
 
     }
 
@@ -52,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
