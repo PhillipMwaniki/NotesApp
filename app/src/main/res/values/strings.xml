@@ -8,4 +8,6 @@
     <string name="enter_content">Enter Content</string>
     <string name="title_home">HOME</string>
     <string name="title_settings">SETTINGS</string>
+    <string name="action_save">SAVE</string>
+    <string name="action_delete">DELETE</string>
 </resources>

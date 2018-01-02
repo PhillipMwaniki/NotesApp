@@ -22,9 +22,10 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.mikepenz.materialdrawer.util.KeyboardUtil;
 
 import tech.philsoft.notesapp.R;
+import tech.philsoft.notesapp.fragments.NoteListFragment;
 import tech.philsoft.notesapp.fragments.NotePlainEditorFragment;
 
-public class MainActivity extends AppCompatActivity implements NotePlainEditorFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements NoteListFragment.OnFragmentInteractionListener{
 
     Toolbar mToolbar;
     Drawer result = null;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NotePlainEditorFr
         setSupportActionBar(mToolbar);
 
         if (savedInstanceState == null){
-            NotePlainEditorFragment fragment = new NotePlainEditorFragment();
+            NoteListFragment fragment = new NoteListFragment();
             openFragment(fragment, "Note Editor");
         }
 
@@ -60,9 +61,10 @@ public class MainActivity extends AppCompatActivity implements NotePlainEditorFr
                         }
 
                         if (drawerItem != null){
-                            int selectedScren = drawerItem.getIdentifier();
-                            switch (selectedScren){
+                            int selectedScreen = drawerItem.getIdentifier();
+                            switch (selectedScreen){
                                 case 1:
+//                                    openFragment(new NoteListFragment(), "NOTES");
                                     //do nothing
                                     break;
                                 case 2:
