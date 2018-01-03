@@ -21,6 +21,7 @@ import tech.philsoft.notesapp.R;
 import tech.philsoft.notesapp.activities.MainActivity;
 import tech.philsoft.notesapp.activities.NoteEditorActivity;
 import tech.philsoft.notesapp.adapters.NoteListAdapter;
+import tech.philsoft.notesapp.data.NoteManager;
 import tech.philsoft.notesapp.models.Note;
 import tech.philsoft.notesapp.utilities.SampleData;
 
@@ -92,9 +93,8 @@ public class NoteListFragment extends Fragment {
                 if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     int position = recyclerView.getChildLayoutPosition(child);
                     Note selectedNote = mNotes.get(position);
-                    Toast.makeText(getActivity(), "Note: " + selectedNote.getTitle(), Toast.LENGTH_SHORT).show();
-                    //now we have the selected note
-
+                    Intent editorIntent = new Intent(getActivity(), NoteEditorActivity.class);
+                    editorIntent.putExtra("id", selectedNote.getId());
                 }
                 return false;
             }
@@ -110,7 +110,7 @@ public class NoteListFragment extends Fragment {
             }
         });
 
-        mNotes = SampleData.getSampleNotes();
+        mNotes = mNotes = NoteManager.newInstance(getActivity()).getAllNotes();
         NoteListAdapter mAdapter = new NoteListAdapter(mNotes, getActivity());
         mRecyclerView.setAdapter(mAdapter);
     }

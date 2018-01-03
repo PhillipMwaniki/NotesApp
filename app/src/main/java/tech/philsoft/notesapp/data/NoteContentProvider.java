@@ -23,13 +23,14 @@ public class NoteContentProvider extends ContentProvider {
     private static final int NOTE = 100;
     private static final int NOTES = 101;
     private static final String BASE_PATH_NOTE = "notes";
-    private static final String AUTHORITY = "com.okason.prontonotes.data.provider";
+    private static final String AUTHORITY = "tech.philsoft.notesapp.data.provider";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH_NOTE);
 
 
     private DatabaseHelper dbHelper;
 
     private static final UriMatcher URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
+
     static {
         URI_MATCHER.addURI(AUTHORITY, BASE_PATH_NOTE, NOTES);
         URI_MATCHER.addURI(AUTHORITY, BASE_PATH_NOTE + "/#", NOTE);
@@ -60,10 +61,11 @@ public class NoteContentProvider extends ContentProvider {
 
         int type = URI_MATCHER.match(uri);
         switch (type){
-            case NOTE:
-                //there not to do if the query is for the table
-                break;
             case NOTES:
+                queryBuilder.setTables(Constants.NOTES_TABLE);
+                break;
+            case NOTE:
+                queryBuilder.setTables(Constants.NOTES_TABLE);
                 queryBuilder.appendWhere(Constants.COLUMN_ID + " = " + uri.getLastPathSegment());
                 break;
             default:
@@ -75,6 +77,7 @@ public class NoteContentProvider extends ContentProvider {
         return cursor;
     }
 
+
     @Override
     public String getType(Uri uri) {
         return null;
@@ -85,7 +88,7 @@ public class NoteContentProvider extends ContentProvider {
         int type = URI_MATCHER.match(uri);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Long id;
-        switch (type){
+        switch (type) {
             case NOTES:
                 id = db.insert(Constants.NOTES_TABLE, null, values);
                 break;

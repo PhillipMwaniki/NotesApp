@@ -19,7 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.NoteEditorActivity"></activity>
+        <activity android:name=".activities.NoteEditorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <provider
+            android:authorities="tech.philsoft.notesapp.data.provider"
+            android:name=".data.NoteContentProvider"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

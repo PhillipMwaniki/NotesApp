@@ -22,7 +22,7 @@ public class SampleData {
         note1.setTitle("DisneyLand Trip");
         note1.setContent("We went to Disneyland today and the kids had lots of fun!");
         Calendar calendar1 = GregorianCalendar.getInstance();
-        note1.setDataModified(calendar1.getTimeInMillis());
+        note1.setDateModified(calendar1.getTimeInMillis());
 
         //add note1 to the list
         sampleNotes.add(note1);
@@ -37,7 +37,7 @@ public class SampleData {
         Calendar calendar2 = GregorianCalendar.getInstance();
         calendar2.add(Calendar.DAY_OF_WEEK, 1);
         calendar2.add(Calendar.MILLISECOND, 10005623);
-        note2.setDataModified(calendar2.getTimeInMillis());
+        note2.setDateModified(calendar2.getTimeInMillis());
 
         //add note2 to the list
         sampleNotes.add(note2);
@@ -51,7 +51,7 @@ public class SampleData {
         Calendar calendar3 = GregorianCalendar.getInstance();
         calendar3.add(Calendar.DAY_OF_WEEK, 2);
         calendar3.add(Calendar.MILLISECOND, 8962422);
-        note3.setDataModified(calendar3.getTimeInMillis());
+        note3.setDateModified(calendar3.getTimeInMillis());
 
         //add note3 to the list
         sampleNotes.add(note3);
@@ -67,7 +67,7 @@ public class SampleData {
         Calendar calendar4 = GregorianCalendar.getInstance();
         calendar4.add(Calendar.DAY_OF_WEEK, 4);
         calendar4.add(Calendar.MILLISECOND, 49762311);
-        note4.setDataModified(calendar4.getTimeInMillis());
+        note4.setDateModified(calendar4.getTimeInMillis());
 
         //add note4 to the list
         sampleNotes.add(note4);
@@ -83,7 +83,7 @@ public class SampleData {
         //so all the notes do not have the same time stamp
         Calendar calendar5 = GregorianCalendar.getInstance();
         calendar5.add(Calendar.MILLISECOND, 2351689);
-        note5.setDataModified(calendar5.getTimeInMillis());
+        note5.setDateModified(calendar5.getTimeInMillis());
 
         //add note5 to the list
         sampleNotes.add(note5);
